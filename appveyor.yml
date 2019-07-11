@@ -5,6 +5,16 @@ environment:
   ANDROID_COMPILE_SDK: "28"
   ANDROID_BUILD_TOOLS: "28.0.3"
   ANDROID_SDK_TOOLS: "4333796"
+  SECRET:
+    secure: oaNCQPzAOtg0UYbcIea0Cw==
+  MYAPP_RELEASE_STORE_FILE: key.keystore
+  MYAPP_RELEASE_KEY_ALIAS: key
+  MYAPP_RELEASE_STORE_PASSWORD:
+    secure: sZJYhP0eTGunJp+SfLpa8Q==
+  MYAPP_RELEASE_KEY_PASSWORD:
+    secure: sZJYhP0eTGunJp+SfLpa8Q==
+
+build: off
 
 init:
 - apt-get --quiet update --yes
@@ -35,7 +45,7 @@ install:
 - echo "MYAPP_RELEASE_STORE_PASSWORD=$MYAPP_RELEASE_STORE_PASSWORD" >> android/gradle.properties
 - echo "MYAPP_RELEASE_KEY_PASSWORD=$MYAPP_RELEASE_KEY_PASSWORD" >> android/gradle.properties
 
-build:
+build-script:
 - cd android
 - ./gradlew assembleDebug
 - ./gradlew assembleRelease
